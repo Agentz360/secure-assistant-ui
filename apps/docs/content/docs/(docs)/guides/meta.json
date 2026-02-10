@@ -3,10 +3,12 @@
   "pages": [
     "attachments",
     "branching",
+    "chain-of-thought",
     "context-api",
     "dictation",
     "editing",
     "latex",
+    "quoting",
     "speech",
     "suggestions",
     "tool-ui",
