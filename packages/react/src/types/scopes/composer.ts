@@ -1,9 +1,12 @@
-import type { Attachment } from "../AttachmentTypes";
-import type { MessageRole, RunConfig } from "../AssistantTypes";
-import type { QuoteInfo } from "../QuoteTypes";
-import type { ComposerRuntime } from "../../legacy-runtime/runtime";
+import type {
+  Attachment,
+  MessageRole,
+  RunConfig,
+  QuoteInfo,
+  ComposerRuntime,
+  DictationState,
+} from "@assistant-ui/core";
 import type { AttachmentMethods } from "./attachment";
-import { DictationState } from "../../legacy-runtime/runtime-cores";
 
 export type ComposerState = {
   readonly text: string;

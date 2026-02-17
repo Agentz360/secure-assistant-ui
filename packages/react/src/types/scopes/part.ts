@@ -1,11 +1,11 @@
 import type { ToolResponse } from "assistant-stream";
-import type { MessagePartRuntime } from "../../legacy-runtime/runtime";
 import type {
+  MessagePartRuntime,
   ThreadUserMessagePart,
   ThreadAssistantMessagePart,
   MessagePartStatus,
   ToolCallMessagePartStatus,
-} from "../AssistantTypes";
+} from "@assistant-ui/core";
 
 export type PartState = (ThreadUserMessagePart | ThreadAssistantMessagePart) & {
   readonly status: MessagePartStatus | ToolCallMessagePartStatus;

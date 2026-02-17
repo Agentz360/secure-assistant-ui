@@ -1,8 +1,7 @@
 "use client";
 
-import type { MessagePartState } from "../../legacy-runtime/runtime/MessagePartRuntime";
+import type { SourceMessagePart, MessagePartState } from "@assistant-ui/core";
 import { useAuiState } from "@assistant-ui/store";
-import { SourceMessagePart } from "../../types";
 
 export const useMessagePartSource = () => {
   const source = useAuiState((s) => {

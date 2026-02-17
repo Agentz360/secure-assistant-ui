@@ -13,15 +13,16 @@ import {
   Derived,
 } from "@assistant-ui/store";
 import { withKey } from "@assistant-ui/tap";
-import type { Attachment } from "../types/AttachmentTypes";
-import { ModelContext } from "./ModelContextClient";
-import { Tools } from "./Tools";
-import { Suggestions } from "./Suggestions";
-import {
+import type {
+  Attachment,
   ThreadAssistantMessagePart,
   ThreadUserMessagePart,
-} from "../types/MessagePartTypes";
-import type { ThreadMessage } from "../types";
+  ThreadMessage,
+} from "@assistant-ui/core";
+import { ModelContext } from "./ModelContextClient";
+import { Tools } from "./Tools";
+import { DataRenderers } from "./DataRenderers";
+import { Suggestions } from "./Suggestions";
 
 export type ExternalThreadMessage = ThreadMessage & {
   id: string;
@@ -492,6 +493,9 @@ attachTransformScopes(ExternalThread, (scopes, parent) => {
   }
   if (!result.tools && parent.tools.source === null) {
     result.tools = Tools({});
+  }
+  if (!result.dataRenderers && parent.dataRenderers.source === null) {
+    result.dataRenderers = DataRenderers();
   }
   if (!result.suggestions && parent.suggestions.source === null) {
     result.suggestions = Suggestions();

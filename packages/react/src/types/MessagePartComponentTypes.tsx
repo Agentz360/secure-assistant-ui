@@ -1,6 +1,7 @@
 import type { ComponentType, PropsWithChildren } from "react";
 import type {
   MessagePartStatus,
+  DataMessagePart,
   FileMessagePart,
   ImageMessagePart,
   ReasoningMessagePart,
@@ -8,8 +9,8 @@ import type {
   TextMessagePart,
   ToolCallMessagePart,
   Unstable_AudioMessagePart,
-} from "./AssistantTypes";
-import { MessagePartState } from "../legacy-runtime/runtime/MessagePartRuntime";
+} from "@assistant-ui/core";
+import type { MessagePartState } from "@assistant-ui/core";
 import { ToolResponse } from "assistant-stream";
 
 export type EmptyMessagePartProps = {
@@ -43,6 +44,12 @@ export type Unstable_AudioMessagePartProps = MessagePartState &
   Unstable_AudioMessagePart;
 export type Unstable_AudioMessagePartComponent =
   ComponentType<Unstable_AudioMessagePartProps>;
+
+export type DataMessagePartProps<T = any> = MessagePartState &
+  DataMessagePart<T>;
+export type DataMessagePartComponent<T = any> = ComponentType<
+  DataMessagePartProps<T>
+>;
 
 export type ToolCallMessagePartProps<
   TArgs = any,
