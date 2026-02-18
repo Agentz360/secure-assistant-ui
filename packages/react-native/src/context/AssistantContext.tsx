@@ -1,10 +1,14 @@
-import { createContext, useContext, type ReactNode } from "react";
-import type { AssistantRuntime } from "@assistant-ui/core";
-
-const AssistantContext = createContext<AssistantRuntime | null>(null);
+import { type ComponentType, type ReactNode, memo } from "react";
+import { useAui, AuiProvider } from "@assistant-ui/store";
+import type {
+  AssistantRuntime,
+  AssistantRuntimeCore,
+} from "@assistant-ui/core";
+import { RuntimeAdapter } from "../runtimes/runtime-adapter";
 
 export const useAssistantRuntime = (): AssistantRuntime => {
-  const runtime = useContext(AssistantContext);
+  const aui = useAui();
+  const runtime = aui.threads().__internal_getAssistantRuntime?.();
   if (!runtime) {
     throw new Error(
       "useAssistantRuntime must be used within an AssistantProvider",
@@ -13,16 +17,28 @@ export const useAssistantRuntime = (): AssistantRuntime => {
   return runtime;
 };
 
-export const AssistantProvider = ({
-  runtime,
-  children,
-}: {
-  runtime: AssistantRuntime;
-  children: ReactNode;
-}) => {
-  return (
-    <AssistantContext.Provider value={runtime}>
-      {children}
-    </AssistantContext.Provider>
-  );
+const getRenderComponent = (runtime: AssistantRuntime) => {
+  return (runtime as { _core?: AssistantRuntimeCore })._core?.RenderComponent as
+    | ComponentType
+    | undefined;
 };
+
+export const AssistantProvider = memo(
+  ({
+    runtime,
+    children,
+  }: {
+    runtime: AssistantRuntime;
+    children: ReactNode;
+  }) => {
+    const aui = useAui({ threads: RuntimeAdapter(runtime) }, { parent: null });
+    const RenderComponent = getRenderComponent(runtime);
+
+    return (
+      <AuiProvider value={aui}>
+        {RenderComponent && <RenderComponent />}
+        {children}
+      </AuiProvider>
+    );
+  },
+);
