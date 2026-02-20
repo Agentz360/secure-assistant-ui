@@ -48,7 +48,8 @@ import Image from "next/image";
 import { useState, type FC } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModelSelector } from "@/components/assistant-ui/model-selector";
-import { MODELS } from "@/constants/model";
+import { docsModelOptions } from "@/components/docs/assistant/docs-model-options";
+import { DEFAULT_MODEL_ID } from "@/constants/model";
 
 const Logo: FC = () => {
   return (
@@ -106,26 +107,13 @@ const MobileSidebar: FC = () => {
   );
 };
 
-const models = MODELS.map((m) => ({
-  id: m.value,
-  name: m.name,
-  icon: (
-    <Image
-      src={m.icon}
-      alt={m.name}
-      width={16}
-      height={16}
-      className="size-4"
-    />
-  ),
-  ...(m.disabled ? { disabled: true as const } : undefined),
-}));
+const models = docsModelOptions();
 
 const ModelPicker: FC = () => {
   return (
     <ModelSelector
       models={models}
-      defaultValue={MODELS[0].value}
+      defaultValue={DEFAULT_MODEL_ID}
       variant="outline"
     />
   );
@@ -186,7 +174,7 @@ const Thread: FC = () => {
           }}
         />
 
-        <ThreadPrimitive.ViewportFooter className="aui-thread-viewport-footer sticky bottom-0 mx-auto mt-auto flex w-full max-w-(--thread-max-width) flex-col gap-4 overflow-visible rounded-t-3xl pb-4 md:pb-6">
+        <ThreadPrimitive.ViewportFooter className="aui-thread-viewport-footer sticky bottom-0 mx-auto mt-auto flex w-full max-w-(--thread-max-width) flex-col gap-4 overflow-visible rounded-t-3xl bg-background pb-4 md:pb-6">
           <ThreadScrollToBottom />
           <Composer />
         </ThreadPrimitive.ViewportFooter>
