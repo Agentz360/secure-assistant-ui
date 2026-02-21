@@ -136,6 +136,9 @@ importers:
       '@assistant-ui/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@aui-x/prism':
+        specifier: ^0.0.3
+        version: 0.0.3(@ai-sdk/provider@3.0.8)(@anthropic-ai/sdk@0.74.0(zod@4.3.6))(ai@6.0.92(zod@4.3.6))(openai@6.22.0(ws@8.19.0)(zod@4.3.6))
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.71.1(react@19.2.4))
@@ -537,6 +540,52 @@ importers:
       zustand:
         specifier: ^5.0.11
         version: 5.0.11(@types/react@19.2.14)(immer@11.1.4)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4))
+
+  examples/waterfall:
+    dependencies:
+      '@assistant-ui/react-o11y':
+        specifier: workspace:*
+        version: link:../../packages/react-o11y
+      '@assistant-ui/store':
+        specifier: workspace:*
+        version: link:../../packages/store
+      '@assistant-ui/tap':
+        specifier: workspace:*
+        version: link:../../packages/tap
+      next:
+        specifier: ^16.1.6
+        version: 16.1.6(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@assistant-ui/x-buildutils':
+        specifier: workspace:*
+        version: link:../../packages/x-buildutils
+      '@tailwindcss/postcss':
+        specifier: ^4.1.18
+        version: 4.2.0
+      '@types/node':
+        specifier: ^25.2.1
+        version: 25.3.0
+      '@types/react':
+        specifier: ^19.2.13
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^4.1.18
+        version: 4.2.0
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   examples/with-ag-ui:
     dependencies:
@@ -2155,9 +2204,6 @@ importers:
 
   packages/core:
     dependencies:
-      '@assistant-ui/tap':
-        specifier: ^0.5.0
-        version: link:../tap
       assistant-stream:
         specifier: ^0.3.3
         version: link:../assistant-stream
@@ -2168,6 +2214,9 @@ importers:
         specifier: ^4.0.0
         version: 4.3.6
     devDependencies:
+      '@assistant-ui/tap':
+        specifier: workspace:*
+        version: link:../tap
       '@assistant-ui/x-buildutils':
         specifier: workspace:*
         version: link:../x-buildutils
@@ -2650,6 +2699,28 @@ importers:
         specifier: ^4.0.18
         version: 4.0.18(@opentelemetry/api@1.9.0)(@types/node@25.3.0)(@vitest/ui@4.0.18)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
 
+  packages/react-o11y:
+    dependencies:
+      '@assistant-ui/store':
+        specifier: workspace:*
+        version: link:../store
+      '@assistant-ui/tap':
+        specifier: workspace:*
+        version: link:../tap
+      '@radix-ui/react-primitive':
+        specifier: ^2.1.4
+        version: 2.1.4(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+    devDependencies:
+      '@assistant-ui/x-buildutils':
+        specifier: workspace:*
+        version: link:../x-buildutils
+      '@types/react':
+        specifier: ^19.2.13
+        version: 19.2.14
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+
   packages/react-streamdown:
     dependencies:
       '@streamdown/cjk':
@@ -2740,16 +2811,16 @@ importers:
 
   packages/store:
     dependencies:
-      '@assistant-ui/core':
-        specifier: ^0.1.0
-        version: link:../core
-      '@assistant-ui/tap':
-        specifier: ^0.5.0
-        version: link:../tap
       use-effect-event:
         specifier: ^2.0.3
         version: 2.0.3(react@19.2.4)
     devDependencies:
+      '@assistant-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@assistant-ui/tap':
+        specifier: workspace:*
+        version: link:../tap
       '@assistant-ui/x-buildutils':
         specifier: workspace:*
         version: link:../x-buildutils
@@ -3088,6 +3159,21 @@ packages:
 
   '@asamuzakjp/nwsapi@2.3.9':
     resolution: {integrity: sha512-n8GuYSrI9bF7FFZ/SjhwevlHc8xaVlb/7HmHelnc/PZXBD2ZR49NnN9sMMuDdEGPeeRQ5d0hqlSlEpgCX3Wl0Q==}
+
+  '@aui-x/prism@0.0.3':
+    resolution: {integrity: sha512-ZfUtS3jNMVG/NP5lI3tQHtsE8cDPpZv/pCKB2GMqEmoaRy+aTCrFmZyAvQpDYLttwjyMU2P5MDD/xnM6pNZ4CQ==}
+    peerDependencies:
+      '@ai-sdk/provider': '>=2.0.0'
+      '@anthropic-ai/sdk': '>=0.30.0'
+      ai: '>=6.0.0'
+      openai: '>=4.0.0'
+    peerDependenciesMeta:
+      '@ai-sdk/provider':
+        optional: true
+      '@anthropic-ai/sdk':
+        optional: true
+      openai:
+        optional: true
 
   '@babel/code-frame@7.10.4':
     resolution: {integrity: sha512-vG6SvB6oYEhvgisZNFRmRCUkLz11c7rp+tbNTynGqc6mS1d5ATd/sGyV6W0KZZnXRKMTzZDRgQT3Ou9jhpAfUg==}
@@ -12110,6 +12196,14 @@ snapshots:
       lru-cache: 11.2.6
 
   '@asamuzakjp/nwsapi@2.3.9': {}
+
+  '@aui-x/prism@0.0.3(@ai-sdk/provider@3.0.8)(@anthropic-ai/sdk@0.74.0(zod@4.3.6))(ai@6.0.92(zod@4.3.6))(openai@6.22.0(ws@8.19.0)(zod@4.3.6))':
+    dependencies:
+      ai: 6.0.92(zod@4.3.6)
+    optionalDependencies:
+      '@ai-sdk/provider': 3.0.8
+      '@anthropic-ai/sdk': 0.74.0(zod@4.3.6)
+      openai: 6.22.0(ws@8.19.0)(zod@4.3.6)
 
   '@babel/code-frame@7.10.4':
     dependencies:
