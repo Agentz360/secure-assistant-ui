@@ -1,5 +1,21 @@
 # @assistant-ui/react
 
+## 0.12.14
+
+### Patch Changes
+
+- 03714af: fix: DataRenderers not in scope
+- Updated dependencies [03714af]
+  - @assistant-ui/core@0.1.2
+
+## 0.12.13
+
+### Patch Changes
+
+- 17cf9a8: feat(telemetry): add reasoning/cached token usage across cloud reporting paths
+- Updated dependencies [17cf9a8]
+  - assistant-cloud@0.1.20
+
 ## 0.12.12
 
 ### Patch Changes
