@@ -287,7 +287,7 @@ const Composer: FC = () => {
 
 const ComposerAction: FC = () => {
   return (
-    <div className="aui-composer-action-wrapper relative mx-2 mb-2 flex items-center justify-between">
+    <div className="aui-composer-action-wrapper relative mx-1 mb-1.75 flex items-center justify-between">
       <ComposerAddAttachment />
       <AuiIf condition={(s) => !s.thread.isRunning}>
         <ComposerPrimitive.Send asChild>
@@ -347,7 +347,7 @@ const AssistantMessage: FC = () => {
         <MessageError />
       </div>
 
-      <div className="aui-assistant-message-footer mt-1 ml-2 flex">
+      <div className="aui-assistant-message-footer mt-1 ml-2 flex min-h-6 items-center">
         <BranchPicker />
         <AssistantActionBar />
       </div>
@@ -371,8 +371,7 @@ const AssistantActionBar: FC = () => {
     <ActionBarPrimitive.Root
       hideWhenRunning
       autohide="not-last"
-      autohideFloat="single-branch"
-      className="aui-assistant-action-bar-root col-start-3 row-start-2 -ml-1 flex gap-1 text-muted-foreground data-floating:absolute data-floating:rounded-md data-floating:border data-floating:bg-background data-floating:p-1 data-floating:shadow-sm"
+      className="aui-assistant-action-bar-root col-start-3 row-start-2 -ml-1 flex gap-1 text-muted-foreground"
     >
       <ActionBarPrimitive.Copy asChild>
         <TooltipIconButton tooltip="Copy">
@@ -389,7 +388,6 @@ const AssistantActionBar: FC = () => {
           <RefreshCwIcon />
         </TooltipIconButton>
       </ActionBarPrimitive.Reload>
-      <MessageTiming />
       <ActionBarMorePrimitive.Root>
         <ActionBarMorePrimitive.Trigger asChild>
           <TooltipIconButton
@@ -412,6 +410,7 @@ const AssistantActionBar: FC = () => {
           </ActionBarPrimitive.ExportMarkdown>
         </ActionBarMorePrimitive.Content>
       </ActionBarMorePrimitive.Root>
+      <MessageTiming />
     </ActionBarPrimitive.Root>
   );
 };
@@ -526,7 +525,7 @@ export const Shadcn: FC = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="flex h-full w-full bg-background [--primary-foreground:0_0%_98%] [--primary:0_0%_9%] dark:[--primary-foreground:0_0%_9%] dark:[--primary:0_0%_98%]">
+    <div className="flex h-full w-full bg-background">
       <div className="hidden md:block">
         <Sidebar collapsed={sidebarCollapsed} />
       </div>
